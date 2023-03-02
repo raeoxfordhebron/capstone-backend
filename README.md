@@ -1,4 +1,4 @@
-# Capstone Read Me
+# Roller Derby Management
 
 
 [Trello Board Link](https://trello.com/b/e9tUtCcX/capstone)
