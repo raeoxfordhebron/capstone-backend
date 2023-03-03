@@ -50,4 +50,6 @@ Outlet -- "/authors/delete/:id" --> deleteAuthor
 
 ### Wireframes & Mockups
 
+<img src="https://i.imgur.com/krnqX2j.png"/>
+
 ### Daily Plan
