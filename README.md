@@ -1,5 +1,5 @@
 # Book Library
-
+This app lets users keep track of the books they read and the authors that wrote the book. Users will be able to see all books and authors, click on a book or author to view it, create, update, and delete books and authors. 
 
 [Trello Board Link](https://trello.com/b/e9tUtCcX/capstone)
 
