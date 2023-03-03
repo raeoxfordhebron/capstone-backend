@@ -35,8 +35,8 @@ Outlet -- "/jobs/delete/:id" --> deleteAction
 | /authors/delete/:id | authorDelete | | deleteAuthor | Delete an author |
 
 ### User Stories
-- As a user, I want to be able to create a roller derby league.
-- As a user, I want to be able to add people to the roller derby league.
+- As a user, I want to be able to create, update, and delete a book.
+- As a user, I want to be able to create, update, and delete an author.
 
 [Data Schema](https://drawsql.app/teams/seir-turmeric/diagrams/capstone)
 
