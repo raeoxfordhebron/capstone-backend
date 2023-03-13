@@ -4,7 +4,8 @@ This app lets users keep track of the books they read and the authors that wrote
 [Trello Board Link](https://trello.com/b/e9tUtCcX/capstone)
 
 ### Technologies Used
-- Oracle
+- MySQL
+- Express
 - Node.js
 - Sequelize
 - React
