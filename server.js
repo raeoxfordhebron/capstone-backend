@@ -38,17 +38,12 @@ app.post('/books/create', async (req, res) => {
 
 // Book Delete Route
 app.delete('/books/:id', async (req, res) => {
-    const id = req.params.id
-    await Book.destroy({
-        where: {
-            id: id
-        }
-    }).then(function(rowDeleted){
-        if(rowDeleted === id){
-            console.log('Deleted successfully')
-        }
-    })
-    
+    const book = await Book.findOne({where: {id: req.params.id}}).catch(e => {console.log(e.message)})
+    if(!book){
+        console.log("err")
+    }
+    await book.destroy()
+    res.redirect('/books')
 })
 
 const PORT = process.env.PORT || 4000
