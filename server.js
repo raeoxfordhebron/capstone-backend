@@ -36,6 +36,20 @@ app.post('/books/create', async (req, res) => {
     }
 })
 
+// Book Update Route
+app.put('/books/:id'), async (req, res) => {
+   try {
+    const { id } = req.params.id
+    const [updated] = await Book.update(req.body, {
+        where: {id: id}
+    })
+    if(updated) {
+        const updatedBook = await Book.findOne({where: {id: id}})
+    } return res.status(200).json(updatedBook)
+   } catch (error) {
+    return res.status(500).send(error.message)
+   }}
+
 // Book Delete Route
 app.delete('/books/:id', async (req, res) => {
     const book = await Book.findOne({where: {id: req.params.id}}).catch(e => {console.log(e.message)})
@@ -49,4 +63,4 @@ app.delete('/books/:id', async (req, res) => {
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`)
-})
+}) 
