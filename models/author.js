@@ -1,30 +1,31 @@
 const sequelize = require('../database')
 const { DataTypes } = require('sequelize')
+const Book = require('./book')
 
-const Book = sequelize.define('Book', {
+const Author = sequelize.define('Author', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    title: {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    bookid: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
-    },
-    genre: {
-        type: DataTypes.STRING
     },
     image: {
         type: DataTypes.STRING
     }
 })
 
-async function migrateBook(){
-    Book.sync({alter: true})
+async function migrateAuthor(){
+    Author.sync({alter: true})
 }
 
-migrateBook()
+migrateAuthor()
 
-module.exports = Book
+module.exports = Author
