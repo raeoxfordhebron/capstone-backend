@@ -26,7 +26,8 @@ router.get('/', async (req, res) => {
  })
  
  // Book Update Route
- router.put('/:id'), async (req, res) => {
+ router.put('/:id', async (req, res) => {
+    console.log("anything")
      try {
         const book = await Book.findByPk(req.params.id)
         await book.set(req.body)
@@ -35,7 +36,7 @@ router.get('/', async (req, res) => {
      } catch (error) {
         res.status(400).json({error})
      }
- }
+ })
  
  // Book Delete Route
  router.delete('/:id', async (req, res) => {
