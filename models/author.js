@@ -15,15 +15,9 @@ const Author = sequelize.define('Author', {
     },
     image: {
         type: DataTypes.STRING
-    },
-    bookid: {
-        type: DataTypes.INTEGER, 
-        references: {
-            model: Book, 
-            key: 'id'
-        }
     }
-})
+    }
+)
 
 Author.associate = function (models) {
     Author.hasMany(models.Book, {

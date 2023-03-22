@@ -5,6 +5,7 @@ const cors = require('cors')
 const corsOptions = require("./cors.js")
 const rootRouter = require('../controllers/root')
 const bookRouter = require('../controllers/book')
+const authorRouter = require('../controllers/author')
 
 const corsConfig = 
 process.env.ENVIRONMENT === "production" ? corsOptions : undefined;
@@ -14,6 +15,7 @@ function registerMiddleware(app) {
     app.use(morgan("dev"))
     app.use(express.json())
     app.use("/books", bookRouter)
+    app.use("/authors", authorRouter)
     app.use(rootRouter)
 }
 
