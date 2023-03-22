@@ -12,14 +12,13 @@ router.get('/', async (req, res) => {
 // Book Create Route
   router.post('/create', async (req, res) => {
     try {
-        const {title, genre, image} = req.body
-        const book = await Book.create({
-            title, 
-            genre,
+        const {name, image} = req.body
+        const author = await Author.create({ 
+            name,
             image
         })
         return res.status(201).json({
-            book,
+            author,
         })
     } catch (error){
         res.status(400).json(error)
