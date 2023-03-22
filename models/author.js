@@ -13,14 +13,25 @@ const Author = sequelize.define('Author', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    bookid: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     image: {
         type: DataTypes.STRING
+    },
+    bookid: {
+        type: DataTypes.INTEGER, 
+        references: {
+            model: Book, 
+            key: 'id'
+        }
     }
 })
+
+Author.associate = function (models) {
+    Author.hasMany(models.Book, {
+        foreignKey: {
+            name: 'authorid'
+        }
+    })
+}
 
 async function migrateAuthor(){
     Author.sync({alter: true})

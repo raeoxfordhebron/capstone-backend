@@ -1,5 +1,6 @@
 const sequelize = require('../database')
 const { DataTypes } = require('sequelize')
+const Author = require('./author')
 
 const Book = sequelize.define('Book', {
     id: {
@@ -18,8 +19,19 @@ const Book = sequelize.define('Book', {
     },
     image: {
         type: DataTypes.STRING
+    },
+    authorid: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: Author,
+            key: 'id'
+        }
     }
 })
+
+Book.associate = function (models) {
+    Book.belongsTo(models.Author)
+}
 
 async function migrateBook(){
     Book.sync({alter: true})
