@@ -22,7 +22,8 @@ const Author = sequelize.define('Author', {
 Author.associate = function (models) {
     Author.hasMany(models.Book, {
         foreignKey: {
-            name: 'authorid'
+            name: 'authorid',
+            allowNull: false
         }
     })
 }

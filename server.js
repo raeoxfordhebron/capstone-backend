@@ -4,7 +4,7 @@ const express = require('express')
 const morgan = require('morgan')
 const Book = require('./models/book')
 const Author = require('./models/author')
-const registerMiddleware = require('./middleware')
+const {registerMiddleware} = require('./middleware')
 
 const app = express()
 
