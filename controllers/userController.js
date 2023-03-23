@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const db = require("../database")
 const jwt = require("jsonwebtoken")
+const express = require('express')
 const router = express.Router()
 
 // Assigning users to the variable User
