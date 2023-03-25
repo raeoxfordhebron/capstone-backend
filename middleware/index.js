@@ -7,7 +7,6 @@ const rootRouter = require('../controllers/root')
 const bookRouter = require('../controllers/book')
 const authorRouter = require('../controllers/author')
 const cookieParser = require('cookie-parser')
-const userRoutes = require('../routes/userRoutes')
 
 
 const corsConfig = 
@@ -21,7 +20,6 @@ function registerMiddleware(app) {
     app.use("/authors", authorRouter)
     app.use(rootRouter)
     app.use(cookieParser())
-    app.use("/users", userRoutes)
 }
 
-module.exports = {registerMiddleware, saveUser}
+module.exports = registerMiddleware
