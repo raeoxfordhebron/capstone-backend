@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Book = require("../models/book")
+const {Book} = require("../models/index")
+
 
 // Book Index Route
 router.get('/', async (req, res) => {
@@ -11,12 +12,13 @@ router.get('/', async (req, res) => {
  // Book Create Route
  router.post('/create', async (req, res) => {
      try {
-         const {title, genre, image} = req.body
+         const {title, genre, image, id, name} = req.body
          const book = await Book.create({
+           
              title, 
              genre,
              image
-         })
+        })
          return res.status(201).json({
              book,
          })
