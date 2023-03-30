@@ -1,26 +1,24 @@
 const express = require('express')
-const router = express.Router({mergeParams: true})
-const Book = require("../models/book")
-const Author = require("../models/author")
+const router = express.Router()
+const {Book} = require("../models/index")
 
 
 // Book Index Route
 router.get('/', async (req, res) => {
-    let authorId = req.authorId
-    console.log(authorId)
-    const books = await Book.findAll({include: Author})
+    const books = await Book.findAll()
     res.json(books)
  })
  
  // Book Create Route
  router.post('/create', async (req, res) => {
      try {
-         const data = req.body
-         const book = await Book.create(
-            data.title,
-            data.genre,
-            data.image,
-         )
+         const {title, genre, image, id, name} = req.body
+         const book = await Book.create({
+           
+             title, 
+             genre,
+             image
+        })
          return res.status(201).json({
              book,
          })
@@ -30,9 +28,8 @@ router.get('/', async (req, res) => {
  })
  
  // Book Update Route
- router.put('/:bookId', async (req, res) => {
-    let authorId = req.authorId
-    let bookId = req.params.bookId
+ router.put('/:id', async (req, res) => {
+    console.log("anything")
      try {
         const book = await Book.findByPk(req.params.id)
         await book.set(req.body)
