@@ -1,16 +1,16 @@
 const express = require('express')
-const router = express.Router()
+const authorRouter = express.Router({mergeParams: true})
 const {Author} = require('../models/index')
 
 
 // Author Index Route
-router.get('/', async (req, res) => {
+authorRouter.get('/', async (req, res) => {
     const authors = await Author.findAll()
     res.json(authors)
  })
 
 // Author Create Route
-  router.post('/create', async (req, res) => {
+authorRouter.post('/create', async (req, res) => {
     try {
         const {name, image} = req.body
         const author = await Author.create({ 
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 })
 
 // Author Update Route
- router.put('/:id', async (req, res) => {
+authorRouter.put('/:id', async (req, res) => {
      try {
         const author = await Author.findByPk(req.params.id)
         await author.set(req.body)
@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
 
 
  // Author Delete Route
-  router.delete('/:id', async (req, res) => {
+ authorRouter.delete('/:id', async (req, res) => {
     const author = await Author.findOne({where: {id: req.params.id}}).catch(e => {console.log(e.message)})
     if(!author){
         console.log("err")
@@ -49,12 +49,19 @@ router.get('/', async (req, res) => {
 })
 
  // Author Show Route
- router.get('/:id', async (req, res) => {
-    try{const author = await Author.findByPk(req.params.id)
+ authorRouter.get('/:id', async (req, res) => {
+    let authorId = req.params.id
+    try{const author = await Author.findByPk(authorId)
     res.json(author)}
     catch (error){
         res.status(400).json({error})
     }
  })
 
-module.exports = router
+ authorRouter.use('/:authorId/books', function(req, res, next) {
+    req.authorId = req.params.authorId;
+    next()
+ })
+
+
+module.exports = authorRouter
