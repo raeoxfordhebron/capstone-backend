@@ -12,9 +12,8 @@ router.get('/', async (req, res) => {
  // Book Create Route
  router.post('/create', async (req, res) => {
      try {
-         const {title, genre, image, id, name} = req.body
+         const {title, genre, image} = req.body
          const book = await Book.create({
-           
              title, 
              genre,
              image
