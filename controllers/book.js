@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const {Book} = require("../models/index")
+const passport = require('passport')
 
 
 // Book Index Route
-router.get('/', async (req, res) => {
+router.get('/', passport.authenticate("jwt", {session: false}), async function(req, res) {
     const books = await Book.findAll()
     res.json(books)
  })
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
              image
         })
          return res.status(201).json({
-             book,
+             book
          })
      } catch (error){
          res.status(400).json(error)

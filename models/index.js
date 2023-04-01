@@ -42,6 +42,21 @@ const Book = sequelize.define('Book', {
     }
 })
 
+const User = sequelize.define('User',{
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    email: {
+        type: DataTypes.STRING
+    }, 
+    password: {
+        type: DataTypes.STRING
+    }    
+})
+
 Book.associate = function () {
     Book.belongsTo(Author)
 }
@@ -62,8 +77,14 @@ async function migrateAuthor(){
     Author.sync({alter: true})
 }
 
+async function migrateUser(){
+    User.sync({alter: true})
+}
+
 migrateAuthor()
 
 migrateBook()
 
-module.exports = {Book, Author}
+migrateUser()
+
+module.exports = {Book, Author, User}
