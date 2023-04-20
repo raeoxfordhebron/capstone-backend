@@ -21,7 +21,6 @@ Outlet -- "/authors" --> Index Authors
 Outlet -- "/books/:id" --> Show Books
 Outlet -- "/authors/:id" --> Show Authors
 Outlet -- "/books/create" --> createBook
-Outlet -- "/authors/create" --> createAuthor
 Outlet -- "/books/update/:id" --> updateBook
 Outlet -- "/authors/update/:id" --> updateAuthor
 Outlet -- "/books/delete/:id" --> deleteBook
